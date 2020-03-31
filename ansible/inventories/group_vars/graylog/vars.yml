@@ -5,5 +5,5 @@ graylog_firewall:
   applications:
     - { port: "9000", direction: "in", policy: "allow", description: "Graylog" }
 
-elastic_search_hosts: 192.168.55.11:9200
+elastic_search_hosts: http://192.168.55.11:9200
 mongodb_hosts: 192.168.55.10:27017

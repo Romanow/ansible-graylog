@@ -1,4 +1,4 @@
-# MongoDB Master-Slave replication
+# MongoDB / ElasticSearch / Graylog playbook configuration
 
 1. Add vault password to `.vault_pass`.
 2. Run command:
