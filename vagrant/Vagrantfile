@@ -2,21 +2,21 @@
 
 servers = [
     {
-        :hostname => "mongodb",
+        :hostname => "mongodb.local",
         :ip => "192.168.55.10",
         :box => "romanow/ansible-box",
         :ram => 1024,
         :cpu => 1
     },
     {
-        :hostname => "elastic",
+        :hostname => "elastic.local",
         :ip => "192.168.55.11",
         :box => "romanow/ansible-box",
         :ram => 1024,
         :cpu => 1
     },
     {
-        :hostname => "graylog",
+        :hostname => "graylog.local",
         :ip => "192.168.55.12",
         :box => "romanow/ansible-box",
         :ram => 512,

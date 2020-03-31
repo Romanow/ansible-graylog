@@ -1,0 +1,4 @@
+---
+# file: tasks/mongodb/defaults/main.yml
+mongodb:
+  version: 4.2

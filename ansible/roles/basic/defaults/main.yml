@@ -1,0 +1,7 @@
+---
+# file: roles/basic/defaults/main.yml
+basic_packages:
+  - curl
+  - htop
+  - unzip
+  - apt-transport-https

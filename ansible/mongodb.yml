@@ -1,0 +1,7 @@
+---
+# file: mongodb.yml
+- hosts: "mongodb"
+  vars:
+    firewall: "{{ mongodb_firewall }}"
+  roles:
+    - mongodb

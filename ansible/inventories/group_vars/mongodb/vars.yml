@@ -1,0 +1,6 @@
+---
+# file: inventories/group_vars/mongodb/vars.yml
+mongodb_firewall:
+  enabled: True
+  applications:
+    - { port: "27017", direction: "in", policy: "allow", description: "Mongodb" }
