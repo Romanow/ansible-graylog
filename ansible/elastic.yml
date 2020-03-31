@@ -1,5 +1,5 @@
 ---
-# file: mongodb.yml
+# file: elastic.yml
 - hosts: "elastic"
   vars:
     firewall: "{{ elastic_firewall }}"

@@ -15,7 +15,7 @@
 - name: Install MongoDB
   become: yes
   apt:
-    name: "mongodb-org={{ mongodb.version }}"
+    name: mongodb-org
     update_cache: yes
     state: present
 

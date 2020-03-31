@@ -1,0 +1,10 @@
+---
+# file: roles/graylog/defaults/main.yml
+graylog:
+  version: 3.2
+  admin_user: admin
+  port: 9000
+  host: "{{ ansible_host }}"
+  bin_path: /usr/share/graylog-server/bin
+  data_path: /var/lib/graylog-server
+  plugin_path: /usr/share/graylog-server/plugin

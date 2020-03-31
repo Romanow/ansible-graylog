@@ -1,0 +1,27 @@
+---
+# file: roles/graylog/tasks/main.yml
+- name: Install Graylog repository
+  become: yes
+  apt:
+    deb: "https://packages.graylog2.org/repo/packages/graylog-{{ graylog.version }}-repository_latest.deb"
+
+- name: Install Graylog
+  become: yes
+  apt:
+    name: "graylog-server"
+    update_cache: yes
+    state: present
+
+- name: Generate root password
+  shell: 'echo {{ vault_root_passwd }} | tr -d "\n" | sha256sum | cut -d" " -f1'
+  register: sha256_root_passwd
+
+- name: Configure Graylog
+  become: yes
+  template:
+    src: server.conf.j2
+    dest: /etc/graylog/server/server.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart graylog

@@ -1,4 +1,10 @@
 ---
 # file: logging.yml
-- name: Install MongoDB
+- name: Install and configure MongoDB
   import_playbook: mongodb.yml
+
+- name: Install and configure ElasticSearch
+  import_playbook: graylog.yml
+
+- name: Install and configure Graylog
+  import_playbook: graylog.yml

@@ -1,0 +1,7 @@
+---
+# file: graylog.yml
+- hosts: "graylog"
+  vars:
+    firewall: "{{ graylog_firewall }}"
+  roles:
+    - graylog
