@@ -1,0 +1,7 @@
+---
+# file: mongodb.yml
+- hosts: "elastic"
+  vars:
+    firewall: "{{ elastic_firewall }}"
+  roles:
+    - elastic_search

@@ -1,0 +1,7 @@
+---
+# file: inventories/group_vars/elastic/vars.yml
+elastic_firewall:
+  enabled: True
+  applications:
+    - { port: "9200", direction: "in", policy: "allow", description: "ElasticSearch http" }
+    - { port: "9300", direction: "in", policy: "allow", description: "ElasticSearch communication between nodes" }

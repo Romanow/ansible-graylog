@@ -1,6 +1,6 @@
 # file: roles/mongodb/handlers/main.yml
-- name: restart mongod
+- name: restart elastic
   become: yes
   service:
-    name: mongod
+    name: elasticsearch
     state: restarted

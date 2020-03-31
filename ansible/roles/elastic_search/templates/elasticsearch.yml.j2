@@ -1,0 +1,10 @@
+node.name: elasticsearch
+cluster.name: {{ elastic.cluster_name }}
+action.auto_create_index: false
+
+path.logs: {{ elastic.log_path }}
+path.data: {{ elastic.data_path }}
+
+network.host: {{ elastic.bind_host }}
+http.port: {{ elastic.http_port }}
+transport.port: {{ elastic.transport_port }}

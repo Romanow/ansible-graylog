@@ -1,5 +1,5 @@
 ---
-# file: tasks/mongodb/tasks/main.yml
+# file: roles/mongodb/tasks/main.yml
 - name: Add MongoDB repository key
   become: yes
   apt_key:
@@ -15,7 +15,16 @@
 - name: Install MongoDB
   become: yes
   apt:
-    name: mongodb-org
+    name: "mongodb-org={{ mongodb.version }}"
     update_cache: yes
     state: present
+
+- name: Configure MongoDB
+  become: yes
+  template:
+    src: mongod.conf.j2
+    dest: /etc/mongod.conf
+    owner: root
+    group: root
+    mode: 0644
   notify: restart mongod

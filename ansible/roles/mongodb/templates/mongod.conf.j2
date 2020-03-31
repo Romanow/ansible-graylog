@@ -1,0 +1,14 @@
+net:
+  port: {{ mongodb.port }}
+  bindIp: {{ ansible_host }}
+
+storage:
+  engine: wiredTiger
+  dbPath: {{ mongodb.data_path }}
+  journal:
+    enabled: true
+
+systemLog:
+  destination: file
+  logAppend: true
+  path: {{ mongodb.log_path }}/mongod.log
