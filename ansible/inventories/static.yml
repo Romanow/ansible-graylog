@@ -1,0 +1,16 @@
+---
+# inventories/group_vars/static.yml
+all:
+  hosts:
+    mongodb:
+      ansible_host: 192.168.55.10
+    elastic:
+      ansible_host: 192.168.55.11
+    graylog:
+      ansible_host: 192.168.55.12
+  children:
+    ansible:
+      hosts:
+        mongodb:
+        elastic:
+        graylog:

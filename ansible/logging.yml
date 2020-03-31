@@ -1,0 +1,6 @@
+---
+# file: logging.yml
+- hosts: "ansible"
+  tasks:
+    - debug:
+        msg: "Hello, world"
