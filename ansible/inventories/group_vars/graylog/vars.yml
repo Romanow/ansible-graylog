@@ -1,9 +1,0 @@
----
-# file: inventories/group_vars/graylog/vars.yml
-graylog_firewall:
-  enabled: True
-  applications:
-    - { port: "9000", direction: "in", policy: "allow", description: "Graylog" }
-
-elastic_search_hosts: http://192.168.55.11:9200
-mongodb_hosts: 192.168.55.10:27017

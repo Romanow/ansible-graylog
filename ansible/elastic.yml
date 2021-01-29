@@ -4,4 +4,4 @@
   vars:
     firewall: "{{ elastic_firewall }}"
   roles:
-    - elastic_search
+    - elastic

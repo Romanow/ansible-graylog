@@ -1,13 +1,15 @@
 ---
 # file: roles/basic/tasks/main.yml
-- name: Get package facts
-  become: yes
-  package_facts:
-    manager: "apt"
-
-- name: Install packages
+- name: Install apt packages
   become: yes
   apt:
-    name: "{{ basic_packages }}"
-    update_cache: yes
+    name: "{{ apt_packages }}"
     cache_valid_time: 86400
+    update_cache: yes
+
+- name: Install pip packages
+  pip:
+    name: "{{ pip_packages }}"
+
+- name: Get package facts
+  package_facts:

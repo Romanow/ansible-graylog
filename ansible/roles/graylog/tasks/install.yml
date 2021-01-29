@@ -1,0 +1,19 @@
+---
+# file: roles/graylog/tasks/install.yml
+- name: Install Graylog repository
+  become: yes
+  apt:
+    deb: "https://packages.graylog2.org/repo/packages/graylog-{{ graylog_version }}-repository_latest.deb"
+
+- name: Install Graylog
+  become: yes
+  apt:
+    name: "graylog-server"
+    update_cache: yes
+    state: present
+
+- name: Enable Graylog
+  become: yes
+  service:
+    name: graylog-server
+    state: enabled

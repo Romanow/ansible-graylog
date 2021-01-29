@@ -1,7 +1,7 @@
 ---
-# file: roles/graylog/meta/main.yml
+# file: roles/elastic/meta/main.yml
 galaxy_info:
-  role_name: graylog
+  role_name: elastic
   author: Romanov Alex <romanowalex@mail.ru>
   license: EULA
   platforms:
@@ -11,5 +11,4 @@ galaxy_info:
 dependencies:
   - basic
   - firewall
-  - mongodb
-  - elastic
+  - galaxy-elastic

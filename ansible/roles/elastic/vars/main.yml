@@ -1,0 +1,5 @@
+---
+# file: roles/elastic/vars/main.yml
+elastic_cluster_enable: yes
+elastic_discovery_hosts: "{{ groups.elastic | map('extract', hostvars, 'ansible_host') | product([elastic_transport_port]) | map('join', ':') }}"
+elastic_cluster_nodes: "{{ groups.elastic | map('extract', hostvars, 'inventory_hostname') | list }}"

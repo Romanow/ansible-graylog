@@ -1,10 +1,25 @@
 ---
 # file: roles/graylog/defaults/main.yml
-graylog:
-  version: 3.2
-  admin_user: admin
-  port: 9000
-  host: "{{ ansible_host }}"
-  bin_path: /usr/share/graylog-server/bin
-  data_path: /var/lib/graylog-server
-  plugin_path: /usr/share/graylog-server/plugin
+graylog_version: "4.0"
+graylog_admin_user: admin
+
+graylog_port: 9000
+graylog_host: "{{ ansible_host }}"
+
+graylog_user: graylog
+graylog_group: graylog
+
+graylog_bin_path: /usr/share/graylog-server/bin
+graylog_data_path: /var/lib/graylog-server
+graylog_conf_path: /etc/graylog/server/
+graylog_plugin_path: /usr/share/graylog-server/plugin
+graylog_journal_path: /var/lib/graylog-server/journal
+graylog_node_id_file: /etc/graylog/server/node-id
+
+# ElasticSearch configuration
+graylog_elastic_shards: "{{ graylog_elastic_hosts | length }}"
+graylog_elastic_replicas: 1
+graylog_elastic_index_age: 1d
+graylog_elastic_count_of_indices: 20
+graylog_elastic_indices_retention_strategy: delete
+graylog_elasticsearch_index_prefix: graylog

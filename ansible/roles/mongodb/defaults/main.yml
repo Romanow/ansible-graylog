@@ -1,7 +1,0 @@
----
-# file: roles/mongodb/defaults/main.yml
-mongodb:
-  version: 4.0
-  port: 27017
-  data_path: /var/lib/mongodb/
-  log_path: /var/log/mongodb/

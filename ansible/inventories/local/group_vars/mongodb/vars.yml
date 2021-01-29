@@ -1,0 +1,22 @@
+---
+# file: inventories/group_vars/mongodb/vars.yml
+mongodb_firewall:
+  enabled: true
+  rules:
+    - { port: "27017", direction: "in", protocol: "tcp", policy: "allow", description: "MongoDB server" }
+
+mongodb_master_node: no
+
+admin:
+  name: superuser
+  password: "{{ vault_mongodb_admin_passwd }}"
+  roles:
+    - root
+
+users:
+  - name: "{{ mongodb_graylog_user }}"
+    password: "{{ vault_mongodb_graylog_passwd }}"
+    database: "{{ mongodb_graylog_database }}"
+    roles:
+      - readWrite
+      - dbAdmin

@@ -1,0 +1,6 @@
+---
+# file: inventories/group_vars/logging/vars.yml
+mongodb_replica_set_name: rs0
+mongodb_graylog_database: graylog
+mongodb_graylog_user: program
+graylog_elasticsearch_index_prefix: graylog

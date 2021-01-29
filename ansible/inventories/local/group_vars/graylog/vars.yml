@@ -1,0 +1,15 @@
+---
+# file: inventories/group_vars/graylog/vars.yml
+firewall:
+  enabled: true
+  rules:
+    - { port: "9000", direction: "in", protocol: "tcp", policy: "allow", description: "Graylog server" }
+
+mongodb_port: 27017
+elastic_transport_port: 9300
+
+graylog_master_node: no
+
+graylog_mongodb_hosts: "{{ groups.mongodb | product([mongodb_port]) | map('join', ':') }}"
+# vault_elastic_graylog_passwd
+graylog_elastic_hosts: "{{ groups.elastic | product([elastic_transport_port]) | map('join', ':') }}"

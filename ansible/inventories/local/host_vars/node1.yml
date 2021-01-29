@@ -1,0 +1,6 @@
+---
+# file: inventories/host_vars/node1.yml
+mongodb_master_node: yes
+mongodb_replica_set_members: "{{ groups.mongodb | map('extract', hostvars, 'ansible_host') | product([mongodb_port]) | map('join', ':') }}"
+
+graylog_master_node: yes

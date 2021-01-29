@@ -1,27 +1,31 @@
-password_secret = {{ vault_password_secret }}
-root_username = {{ graylog.admin_user }}
+is_master = {{ graylog_master_node }}
+node_id_file = {{ graylog_node_id_file }}
+
+password_secret = {{ vault_graylog_password_secret }}
+root_username = {{ graylog_admin_user }}
 root_password_sha2 = {{ sha256_root_passwd.stdout }}
 
-bin_dir = {{ graylog.bin_path }}
-data_dir = {{ graylog.data_path }}
-plugin_dir = {{ graylog.plugin_path }}
+bin_dir = {{ graylog_bin_path }}
+data_dir = {{ graylog_data_path }}
+plugin_dir = {{ graylog_plugin_path }}
 
-http_bind_address = {{ graylog.host }}:{{ graylog.port }}
-http_publish_uri =  http://{{ graylog.host }}:{{ graylog.port }}
+http_bind_address = {{ graylog_host }}:{{ graylog_port }}
+http_publish_uri =  http://{{ graylog_host }}:{{ graylog_port }}
 http_enable_tls = false
 
-elasticsearch_hosts = {{ elastic_search_hosts }}
+elasticsearch_hosts = {{ graylog_elastic_hosts }}
 elasticsearch_connect_timeout = 10s
-rotation_strategy = size
-# 1Gb
-elasticsearch_max_size_per_index = 1073741824
-elasticsearch_max_number_of_indices = 10
-retention_strategy = delete
-# One node, no need shards
-elasticsearch_shards = 1
-elasticsearch_replicas = 0
+
+rotation_strategy = time
+elasticsearch_max_time_per_index = {{ graylog_elastic_index_age }}
+elasticsearch_max_number_of_indices = {{ graylog_elastic_count_of_indices }}
+retention_strategy = {{ graylog_elastic_indices_retention_strategy }}
+elasticsearch_shards = {{ graylog_elastic_shards }}
+elasticsearch_replicas = {{ graylog_elastic_replicas }}
+elasticsearch_index_prefix = {{ graylog_elasticsearch_index_prefix }}
 elasticsearch_template_name = graylog-internal
+elasticsearch_request_timeout = 1m
 
-mongodb_uri = mongodb://{{ mongodb_hosts }}/graylog
+mongodb_uri = mongodb://{{ mongodb_graylog_user }}:{{ vault_mongodb_graylog_passwd }}@{{ graylog_mongodb_hosts }}/{{ mongodb_graylog_database }}?replicaSet={{ mongodb_replica_set_name }}
 
-message_journal_enabled = false
+message_journal_enabled = true

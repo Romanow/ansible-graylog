@@ -1,8 +1,0 @@
----
-# file: roles/java/tasks/main.yml
-- name: Install OpenJDK
-  become: yes
-  apt:
-    name: "{{ package_name }}"
-    update_cache: yes
-    cache_valid_time: 86400

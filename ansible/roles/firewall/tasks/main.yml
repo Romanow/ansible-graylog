@@ -13,9 +13,10 @@
     rule: "{{ item.policy }}"
     direction: "{{ item.direction }}"
     port: "{{ item.port }}"
+    proto: "{{ item.protocol }}"
     comment: "{{ item.description | default ('') }}"
   with_items:
-    - "{{ firewall.applications }}"
+    - "{{ firewall.rules }}"
   notify:
     - restart ufw
   when: firewall.enabled
