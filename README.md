@@ -1,4 +1,4 @@
-# MongoDB / ElasticSearch / Graylog playbook
+# Graylog HA playbook
 
 * [vagrant](/vagrant) 
 * [ansible](/ansible) 

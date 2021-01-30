@@ -18,5 +18,5 @@
 
 ### Запуск playbook
 ```shell script
-ansible-playbook -i inventories/local/static.yml --vault-password-file=.vault_pass graylog.yml -v
+ansible-playbook -i inventories/local/static.yml --vault-password-file=.vault_pass logging.yml -v
 ```
