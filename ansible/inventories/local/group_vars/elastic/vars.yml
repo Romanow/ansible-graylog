@@ -15,8 +15,13 @@ elastic_roles:
         privileges:
           - all
   program:
+    cluster:
+      - all
     indices:
-      - names: "{{ graylog_elasticsearch_index_prefix }}*"
+      - names:
+          - "{{ graylog_elasticsearch_index_prefix }}*"
+          - "{{ graylog_elasticsearch_event_index_prefix }}*"
+          - "{{ graylog_elasticsearch_system_index_prefix }}*"
         privileges:
           - all
 
@@ -25,7 +30,7 @@ elastic_users:
     password: "{{ vault_elastic_admin_passwd }}"
     roles:
       - admin
-  - name: graylog
+  - name: "{{ elastic_graylog_user }}"
     password: "{{ vault_elastic_graylog_passwd }}"
     roles:
       - program

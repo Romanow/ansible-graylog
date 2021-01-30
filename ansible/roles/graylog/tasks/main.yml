@@ -4,12 +4,6 @@
   include_tasks: install.yml
   when: "'graylog-server' not in ansible_facts.packages"
 
-- debug:
-    msg: "{{ graylog_mongodb_hosts }}"
-
-- debug:
-    msg: "{{ graylog_elastic_hosts }}"
-
 - name: Configure Graylog
   include_tasks: configure.yml
   tags: configure

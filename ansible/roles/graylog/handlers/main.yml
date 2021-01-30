@@ -1,6 +1,0 @@
-# file: roles/graylog/handlers/main.yml
-- name: restart graylog
-  become: yes
-  service:
-    name: graylog-server
-    state: restarted

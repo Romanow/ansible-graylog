@@ -3,4 +3,12 @@
 mongodb_replica_set_name: rs0
 mongodb_graylog_database: graylog
 mongodb_graylog_user: program
+
+elastic_graylog_user: graylog
 graylog_elasticsearch_index_prefix: graylog
+graylog_elasticsearch_event_index_prefix: gl-events
+graylog_elasticsearch_system_index_prefix: gl-system-events
+
+mongodb_port: 27017
+elastic_http_port: 9200
+elastic_transport_port: 9300

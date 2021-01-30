@@ -13,7 +13,7 @@ http_bind_address = {{ graylog_host }}:{{ graylog_port }}
 http_publish_uri =  http://{{ graylog_host }}:{{ graylog_port }}
 http_enable_tls = false
 
-elasticsearch_hosts = {{ graylog_elastic_hosts }}
+elasticsearch_hosts = {{ graylog_elastic_hosts | join(',') }}
 elasticsearch_connect_timeout = 10s
 
 rotation_strategy = time
@@ -23,9 +23,14 @@ retention_strategy = {{ graylog_elastic_indices_retention_strategy }}
 elasticsearch_shards = {{ graylog_elastic_shards }}
 elasticsearch_replicas = {{ graylog_elastic_replicas }}
 elasticsearch_index_prefix = {{ graylog_elasticsearch_index_prefix }}
+default_events_index_prefix = {{ graylog_elasticsearch_event_index_prefix }}
+default_system_events_index_prefix = {{ graylog_elasticsearch_system_index_prefix }}
 elasticsearch_template_name = graylog-internal
 elasticsearch_request_timeout = 1m
 
-mongodb_uri = mongodb://{{ mongodb_graylog_user }}:{{ vault_mongodb_graylog_passwd }}@{{ graylog_mongodb_hosts }}/{{ mongodb_graylog_database }}?replicaSet={{ mongodb_replica_set_name }}
+mongodb_uri = mongodb://{{ mongodb_graylog_user }}:{{ vault_mongodb_graylog_passwd }}@{{ graylog_mongodb_hosts | join(',') }}/{{ mongodb_graylog_database }}?replicaSet={{ mongodb_replica_set_name }}
 
 message_journal_enabled = true
+message_journal_dir = {{ graylog_journal_path }}
+message_journal_max_age = 12h
+message_journal_max_size = 5gb

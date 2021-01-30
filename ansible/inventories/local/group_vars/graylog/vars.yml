@@ -1,15 +1,11 @@
 ---
 # file: inventories/group_vars/graylog/vars.yml
-firewall:
+graylog_firewall:
   enabled: true
   rules:
     - { port: "9000", direction: "in", protocol: "tcp", policy: "allow", description: "Graylog server" }
 
-mongodb_port: 27017
-elastic_transport_port: 9300
-
 graylog_master_node: no
 
-graylog_mongodb_hosts: "{{ groups.mongodb | product([mongodb_port]) | map('join', ':') }}"
-# vault_elastic_graylog_passwd
-graylog_elastic_hosts: "{{ groups.elastic | product([elastic_transport_port]) | map('join', ':') }}"
+graylog_mongodb_hosts: "{{ groups.mongodb | map('extract', hostvars, 'ansible_host') | product([mongodb_port]) | map('join', ':') }}"
+graylog_elastic_hosts: "{{ (groups.elastic | map('extract', hostvars, 'ansible_host')) | map('regex_replace', '^(.*)$', 'http://' + elastic_graylog_user + ':' + vault_elastic_graylog_passwd + '@\\1:' + (elastic_http_port | string))  }}"

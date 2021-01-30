@@ -13,5 +13,21 @@
     owner: "{{ graylog_user }}"
     group: "{{ graylog_group }}"
     mode: 0644
-  notify: restart graylog
+  tags: configure
+
+- name: Configure JVM memory
+  become: yes
+  template:
+    src: graylog-server.j2
+    dest: "{{ graylog_memory_conf_file }}"
+    owner: "{{ graylog_user }}"
+    group: "{{ graylog_group }}"
+    mode: 0644
+  tags: configure
+
+- name: Restart Graylog
+  become: yes
+  service:
+    name: graylog-server
+    state: restarted
   tags: configure

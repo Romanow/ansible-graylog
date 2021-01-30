@@ -5,22 +5,22 @@ servers = [
         :hostname => "node1",
         :ip => "192.168.56.10",
         :box => "romanow/ansible-box",
-        :ram => 1024,
-        :cpu => 1
+        :ram => 2048,
+        :cpu => 2
     },
     {
         :hostname => "node2",
         :ip => "192.168.56.11",
         :box => "romanow/ansible-box",
-        :ram => 1024,
-        :cpu => 1
+        :ram => 2048,
+        :cpu => 2
     },
     {
         :hostname => "node3",
         :ip => "192.168.56.12",
         :box => "romanow/ansible-box",
-        :ram => 1024,
-        :cpu => 1
+        :ram => 2048,
+        :cpu => 2
     }
 ]
 

@@ -1,0 +1,9 @@
+JAVA=/usr/bin/java
+
+GRAYLOG_SERVER_JAVA_OPTS="-Xms{{ graylog_java_memory }} -Xmx{{ graylog_java_memory }} -XX:NewRatio=1 -server -XX:+ResizeTLAB -XX:+UseConcMarkSweepGC -XX:+CMSConcurrentMTEnabled -XX:+CMSClassUnloadingEnabled -XX:-OmitStackTraceInFastThrow"
+
+# Avoid endless loop with some TLSv1.3 implementations.
+GRAYLOG_SERVER_JAVA_OPTS="$GRAYLOG_SERVER_JAVA_OPTS -Djdk.tls.acknowledgeCloseNotify=true"
+
+# Pass some extra args to graylog-server. (i.e. "-d" to enable debug mode)
+GRAYLOG_SERVER_ARGS=""
